@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login ke Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-900 flex items-center justify-center h-screen">
+    <div class="w-full max-w-md bg-gray-800 rounded-xl shadow-lg border border-gray-700 p-8">
+        <h2 class="text-3xl font-bold text-center text-sky-400 mb-2">Selamat Datang</h2>
+        <p class="text-center text-gray-400 mb-8">Silakan login untuk melanjutkan ke dashboard</p>
+        
+        <form action="login_process.php" method="POST" onsubmit="return validateForm()" class="space-y-6">
+            <div>
+                <label for="username" class="block mb-2 text-sm font-medium text-gray-300">Username</label>
+                <input type="text" name="username" id="username" class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-2.5 focus:ring-sky-500 focus:border-sky-500" placeholder="user" required>
+            </div>
+            <div>
+                <label for="password" class="block mb-2 text-sm font-medium text-gray-300">Password</label>
+                <input type="password" name="password" id="password" class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-2.5 focus:ring-sky-500 focus:border-sky-500" placeholder="*****" required>
+            </div>
+            <div>
+                <label for="email" class="block mb-2 text-sm font-medium text-gray-300">Email</label>
+                <input type="email" name="email" id="email" class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-2.5 focus:ring-sky-500 focus:border-sky-500" placeholder="emailkamu@gmail.com" required>
+            </div>
+            <button type="submit" class="w-full bg-sky-600 hover:bg-sky-700 focus:ring-4 focus:outline-none focus:ring-sky-800 font-medium rounded-lg text-sm px-5 py-3 text-center text-white">Login</button>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const usernameRegex = /^[a-zA-Z0-9]+$/;
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+
+            if (!usernameRegex.test(username)) {
+                alert("Username hanya boleh huruf dan angka!");
+                return false;
+            }
+            if (!emailRegex.test(email)) {
+                alert("Email harus menggunakan format Gmail yang valid!");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
